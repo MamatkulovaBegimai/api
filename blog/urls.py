@@ -18,6 +18,8 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from apps.posts.views import PostAPIView, PostCreateAPIView, PostUpdateAPIView, PostDeleteAPIView
+from apps.users.views import UserAPIView, RegisterAPIView, UserUpdateAPIView, UserDeleteAPIView
+from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +27,13 @@ urlpatterns = [
     path('api/posts/create/', PostCreateAPIView.as_view(), name="api_post_create"),
     path('api/posts/update/<int:pk>', PostUpdateAPIView.as_view(), name="api_posts_update"),
     path('api/posts/delete/<int:pk>', PostDeleteAPIView.as_view(), name="api_delete_view"),
+    path('api/users/', UserAPIView.as_view(), name="api_users"),
+    path('api/users/register/', RegisterAPIView.as_view(), name='api_users_register'),
+    path('api/users/update/<int:pk>/', UserUpdateAPIView.as_view(), name="api_users_update"),
+    path('api/users/delete/<int:pk>/', UserDeleteAPIView.as_view(), name="api_users_delete"),
+    path('api/login/', jwt_views.TokenObtainPairView.as_view(), name="token_obtain_refresh"),
+    path('api/login/refresh/', jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

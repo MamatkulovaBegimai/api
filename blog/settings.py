@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'apps.posts',
-    'apps.users'
+    'apps.users',
+    'drf_yasg',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework_simplejwt.authentication.JWTAuthentication', ],}
@@ -52,6 +54,24 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+]
+
+CORS_ALLOWED_ORIGING = [
+    "https://domain.com",
+    "https://api.domain.com",
+    "https://localhost:1000",
+    "https://localhost:2000",
+    "https://localhost:3000",
+    "https://localhost:4000",
+    "https://localhost:5000",
+    "https://localhost:6000",
+    "https://localhost:7000",
+    "https://localhost:8000",
+    "https://localhost:9000",    
+    "https://127.0.0.1:1000",
+
 ]
 
 ROOT_URLCONF = 'blog.urls'

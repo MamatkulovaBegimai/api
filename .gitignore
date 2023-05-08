@@ -3,10 +3,10 @@
 *.pot
 *.pyc
 __pycache__
-settings.py 
+blog/settings.py 
 media
-db.sqlite3
-manage.py
+venv/db.sqlite3
+venv/manage.py
 
 # Backup files # 
 *.bak 
